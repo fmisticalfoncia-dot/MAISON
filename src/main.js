@@ -1,8 +1,11 @@
+import './styles/tailwind.css';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/navbar.css';
 import './styles/hero.css';
 import './styles/placeholder.css';
+
+import { renderTiltedGridDemoPage } from './pages/TiltedGridDemoPage.tsx';
 
 import { createNavbar } from './components/Navbar.js';
 import { renderHomePage } from './pages/HomePage.js';
@@ -11,6 +14,7 @@ import { installLinkInterception } from './router.js';
 
 /* Route table — placeholder routes are clearly defined here. */
 const ROUTES = {
+  '/demo/tilted-grid': () => renderTiltedGridDemoPage(),
   '/': () => renderHomePage(),
   '/studio': () => renderPlaceholderPage('studio'),
   '/vault': () => renderPlaceholderPage('vault'),
