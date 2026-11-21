@@ -1,0 +1,23 @@
+/* MAISON MISTYY — design tokens */
+:root {
+  --ivory: #f8f5ef;
+  --espresso: #35251f;
+  --gold: #c5a46d;
+  --beige: #e8dfd2;
+  --ivory-deep: #f1eadd;
+  --paper: #fffdf8;
+  --espresso-soft: rgba(53, 37, 31, 0.72);
+  --espresso-faint: rgba(53, 37, 31, 0.14);
+  --gold-soft: rgba(197, 164, 109, 0.35);
+
+  --serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --sans: 'Jost', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  --nav-height: 76px;
+  --shell: 1320px;
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-frame: 0 24px 48px -18px rgba(53, 37, 31, 0.28),
+    0 8px 20px -10px rgba(53, 37, 31, 0.18);
+  --shadow-lift: 0 34px 64px -20px rgba(53, 37, 31, 0.34),
+    0 12px 28px -12px rgba(53, 37, 31, 0.22);
+}

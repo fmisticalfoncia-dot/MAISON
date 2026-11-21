@@ -1,0 +1,15 @@
+{
+  "name": "maison-mistyy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MAISON MISTYY — luxury creative studio. Hero section & navigation (stage 1).",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
+}
