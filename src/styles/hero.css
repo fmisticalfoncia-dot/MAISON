@@ -1,0 +1,355 @@
+/* MAISON MISTYY — hero section & tilted editorial image grid */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(58rem 34rem at 82% -8%, rgba(232, 223, 210, 0.75), transparent 62%),
+    radial-gradient(40rem 26rem at -10% 108%, rgba(197, 164, 109, 0.1), transparent 60%),
+    var(--ivory);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+  min-height: calc(100svh - var(--nav-height));
+  padding-block: clamp(3rem, 7vh, 5.5rem) clamp(3.5rem, 8vh, 6rem);
+}
+
+/* --- Hero text --- */
+
+.hero-copy {
+  max-width: 36rem;
+}
+
+.hero-copy__headline {
+  margin: 1.4rem 0 1.6rem;
+  font-family: var(--serif);
+  font-size: clamp(2.9rem, 5.6vw, 5.1rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.hero-copy__headline .line {
+  display: block;
+}
+
+.hero-copy__headline .line--italic {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+.hero-copy__lead {
+  margin: 0 0 2.4rem;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.25vw, 1.13rem);
+  line-height: 1.75;
+  color: var(--espresso-soft);
+}
+
+.hero-copy__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-copy__disciplines {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1.1rem;
+  margin: 2.6rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+}
+
+.hero-copy__disciplines li {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.hero-copy__disciplines li + li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* Entrance — text */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: reveal-up 1s var(--ease-luxe) forwards;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+@keyframes reveal-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Hero gallery: tilted editorial grid ---
+   Only the containers animate (position / transform).
+   The <img> files are displayed exactly as supplied — no filters,
+   no cropping, no distortion. Natural aspect ratio is preserved. */
+
+.hero-gallery {
+  position: relative;
+  min-height: 560px;
+}
+
+.hero-card {
+  position: absolute;
+  will-change: transform;
+}
+
+.hero-card--a {
+  left: 0;
+  top: 6%;
+  width: 57%;
+  z-index: 1;
+}
+
+.hero-card--b {
+  right: 0;
+  top: 0;
+  width: 52%;
+  z-index: 3;
+}
+
+.hero-card--c {
+  left: 16%;
+  bottom: 0;
+  width: 54%;
+  z-index: 2;
+}
+
+/* Parallax layer (JS-driven, desktop only) */
+.hero-card__parallax {
+  will-change: transform;
+}
+
+/* Entrance layer */
+.hero-card__enter {
+  opacity: 0;
+  animation: card-enter 1.15s var(--ease-luxe) forwards;
+  animation-delay: var(--card-delay, 0.2s);
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(38px) rotate(var(--tilt, 0deg)) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--tilt, 0deg)) scale(1);
+  }
+}
+
+/* Floating layer — gentle, independent per card */
+.hero-card__float {
+  animation: float-y var(--float-duration, 7s) ease-in-out infinite alternate;
+  animation-delay: var(--float-delay, 0s);
+}
+
+@keyframes float-y {
+  from {
+    transform: translateY(-7px) rotate(calc(var(--tilt, 0deg) - 0.7deg));
+  }
+  to {
+    transform: translateY(9px) rotate(calc(var(--tilt, 0deg) + 0.7deg));
+  }
+}
+
+.hero-card__frame {
+  padding: 12px 12px 0;
+  background: var(--paper);
+  border: 1px solid rgba(197, 164, 109, 0.4);
+  box-shadow: var(--shadow-frame);
+  transition: box-shadow 0.45s var(--ease-luxe), transform 0.45s var(--ease-luxe);
+}
+
+.hero-card:hover .hero-card__frame,
+.hero-card:focus-within .hero-card__frame {
+  box-shadow: var(--shadow-lift);
+}
+
+.hero-card__frame img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: var(--beige);
+}
+
+.hero-card__caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0.15rem 0.95rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--espresso-soft);
+}
+
+.hero-card__caption::after {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: var(--gold);
+  flex: none;
+}
+
+/* Decorative hairline behind the gallery */
+.hero-gallery::before {
+  content: '';
+  position: absolute;
+  inset: 8% 6% 4% 10%;
+  border: 1px solid var(--gold-soft);
+  pointer-events: none;
+}
+
+.hero-gallery__note {
+  position: absolute;
+  right: 2%;
+  bottom: -2.2rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+}
+
+/* --- Tablet --- */
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    min-height: 0;
+  }
+
+  .hero-gallery {
+    min-height: 480px;
+  }
+}
+
+/* --- Mobile: stacked, no overlap, lightweight motion --- */
+@media (max-width: 760px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+    padding-top: 2.6rem;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .hero-copy__headline {
+    font-size: clamp(2.5rem, 11vw, 3.4rem);
+  }
+
+  .hero-copy__ctas .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .hero-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem 1.1rem;
+    min-height: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  .hero-gallery::before {
+    display: none;
+  }
+
+  .hero-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: auto;
+  }
+
+  .hero-card--a {
+    grid-column: 1 / -1;
+    width: 82%;
+    justify-self: center;
+  }
+
+  .hero-card--b,
+  .hero-card--c {
+    width: 100%;
+  }
+
+  .hero-card__float {
+    animation-duration: 9s;
+  }
+
+  .hero-gallery__note {
+    position: static;
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+}
+
+/* --- Reduced motion: static, fully visible composition --- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  .hero-card__enter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-card__float {
+    animation: none;
+    transform: rotate(var(--tilt, 0deg));
+  }
+
+  .hero-card__parallax {
+    transform: none !important;
+  }
+}
+
+/* Natural-ratio editorial grid: no original is hidden behind another. */
+.hero-card { margin: 0; }
+@media (min-width: 761px) {
+  .hero-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1.4rem;
+    align-items: center;
+    min-height: 0;
+    padding: 1rem 0 3rem;
+  }
+  .hero-card { position: relative; inset: auto; width: 100%; }
+  .hero-card--a { grid-column: 1; grid-row: 1 / 3; }
+  .hero-card--b { grid-column: 2; grid-row: 1; }
+  .hero-card--c { grid-column: 2; grid-row: 2; }
+  .hero-gallery__note { right: 0; bottom: -0.5rem; }
+}
+/* The entrance translates its container; the floating layer owns rotation. */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(38px); }
+  to { opacity: 1; transform: translateY(0); }
+}

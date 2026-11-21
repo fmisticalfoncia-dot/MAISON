@@ -1,0 +1,38 @@
+/* MAISON MISTYY — placeholder route pages (destinations not yet built) */
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  min-height: calc(100svh - var(--nav-height));
+  padding: 4rem 1.5rem 6rem;
+  text-align: center;
+  background:
+    radial-gradient(46rem 26rem at 50% -10%, rgba(232, 223, 210, 0.8), transparent 62%),
+    var(--ivory);
+}
+
+.placeholder__inner {
+  max-width: 34rem;
+}
+
+.placeholder__title {
+  margin: 1.3rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.placeholder__text {
+  margin: 0 0 2.2rem;
+  color: var(--espresso-soft);
+  line-height: 1.75;
+}
+
+.placeholder__mark {
+  width: 9px;
+  height: 9px;
+  margin: 0 auto;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
