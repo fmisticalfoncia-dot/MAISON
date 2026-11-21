@@ -33,6 +33,10 @@ export function heroGalleryHtml() {
                   decoding="async"
                   ${i === 0 ? 'fetchpriority="high"' : 'fetchpriority="low"'}
                 />
+                <div class="hero-card__image-error" role="status" hidden>
+                  <p>The original image could not be loaded.</p>
+                  <button type="button" data-retry-image>Retry image</button>
+                </div>
                 <figcaption class="hero-card__caption">${image.caption}</figcaption>
               </div>
             </div>

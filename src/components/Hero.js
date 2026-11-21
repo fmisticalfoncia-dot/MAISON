@@ -1,3 +1,4 @@
+import { mountImageLoading } from './imageLoading.js';
 import { heroTextHtml } from './HeroText.js';
 import { heroGalleryHtml, mountHeroParallax } from './HeroGallery.js';
 
@@ -13,7 +14,12 @@ export function renderHero() {
       </section>
     `,
     mount(root) {
-      return mountHeroParallax(root);
+      const cleanupImages = mountImageLoading(root);
+      const cleanupParallax = mountHeroParallax(root);
+      return () => {
+        cleanupImages();
+        cleanupParallax();
+      };
     },
   };
 }
